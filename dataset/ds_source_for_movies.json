@@ -1,0 +1,27 @@
+{
+	"name": "ds_source_for_movies",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_for_a1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Movie_folder_name": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@concat('movies','/',dataset().Movie_folder_name)",
+					"type": "Expression"
+				},
+				"container": "input"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

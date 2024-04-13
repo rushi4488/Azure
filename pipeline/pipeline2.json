@@ -1,0 +1,124 @@
+{
+	"name": "pipeline2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "string1",
+					"value": {
+						"value": "@join(pipeline().parameters.array1,',')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable2",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "string2",
+					"value": {
+						"value": "@join(pipeline().parameters.array2,',')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "concat",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Set variable2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "concatString",
+					"value": {
+						"value": "@concat(variables('string1'),',',variables('string2'))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"array1": {
+				"type": "array",
+				"defaultValue": [
+					1,
+					2,
+					3,
+					4,
+					5
+				]
+			},
+			"array2": {
+				"type": "array",
+				"defaultValue": [
+					6,
+					7,
+					8,
+					9
+				]
+			}
+		},
+		"variables": {
+			"append_folder": {
+				"type": "Array"
+			},
+			"set_folder": {
+				"type": "Array"
+			},
+			"mastr_pipeline_op": {
+				"type": "Array"
+			},
+			"set_clid_item": {
+				"type": "Array"
+			},
+			"folders_value": {
+				"type": "Array"
+			},
+			"string1": {
+				"type": "String"
+			},
+			"string2": {
+				"type": "String"
+			},
+			"concatString": {
+				"type": "String"
+			},
+			"split var": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-03-26T10:24:21Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
