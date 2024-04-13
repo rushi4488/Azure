@@ -1,0 +1,36 @@
+{
+	"name": "ds_http_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_HttpServer_source_race_schedule",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"year": {
+					"value": "@dataset().yr",
+					"type": "Expression"
+				},
+				"limit": {
+					"value": "@dataset().limit_by_user",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"yr": {
+				"type": "string"
+			},
+			"limit_by_user": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

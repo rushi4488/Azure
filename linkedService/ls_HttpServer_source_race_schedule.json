@@ -1,0 +1,21 @@
+{
+	"name": "ls_HttpServer_source_race_schedule",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"year": {
+				"type": "String"
+			},
+			"limit": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "@{concat('http://ergast.com/api/f1/',linkedService().year,'.json','?limit=',linkedService().limit)}",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

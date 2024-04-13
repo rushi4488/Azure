@@ -1,0 +1,13 @@
+{
+	"name": "ds_source_season",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_source_season",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

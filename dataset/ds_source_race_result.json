@@ -1,0 +1,31 @@
+{
+	"name": "ds_source_race_result",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_source_raceResult",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"season": {
+					"value": "@dataset().ds_season",
+					"type": "Expression"
+				},
+				"round": {
+					"value": "@dataset().ds_round",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"ds_season": {
+				"type": "string"
+			},
+			"ds_round": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
