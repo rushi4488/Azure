@@ -1,0 +1,17 @@
+{
+	"name": "ds_delete_getmetadata1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_deleteOldfile_getemetadata1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "asach"
+			}
+		}
+	}
+}

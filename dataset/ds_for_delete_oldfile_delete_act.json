@@ -1,0 +1,26 @@
+{
+	"name": "ds_for_delete_oldfile_delete_act",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_for_delete_oldfile_delete_act",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"delete_filenm": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().delete_filenm",
+					"type": "Expression"
+				},
+				"fileSystem": "asach"
+			}
+		}
+	}
+}

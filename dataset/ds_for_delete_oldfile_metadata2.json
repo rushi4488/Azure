@@ -1,0 +1,26 @@
+{
+	"name": "ds_for_delete_oldfile_metadata2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_for_delete_oldfile_metadata2",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
+				"fileSystem": "asach"
+			}
+		}
+	}
+}
