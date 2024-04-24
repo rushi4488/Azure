@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "IF NOT EXISTS (SELECT * FROM sys.objects O JOIN sys.schemas S ON O.schema_id = S.schema_id WHERE O.NAME = 'NYCTaxiTripSmall' AND O.TYPE = 'U' AND S.NAME = 'dbo')\nCREATE TABLE dbo.NYCTaxiTripSmall\n    (\n    [DateID] bigint, \n    [MedallionID] nvarchar(1) NULL, \n    [HackneyLicenseID] float NULL, \n    [PickupTimeID] bigint NULL,  \n    [PickupGeographyID] bigint NULL, \n    [DropoffGeographyID] float NULL, \n    [PickupLatitude] float NULL, \n    [PickupLongitude] float NULL, \n    [PickupLatLong] float NULL, \n    [DropoffLatitude] float NULL, \n    [DropoffLongitude] float NULL, \n    [DropoffLatLong] float NULL, \n    [PassengerCount] float NULL, \n    [TripDurationSeconds] float NULL, \n    [TripDistanceMiles] float NULL, \n    [payment_type] float NULL, \n    [trip_type] float NULL, \n    [congestion_surcharge] float  NULL\n    )\nWITH\n    (\n    DISTRIBUTION = ROUND_ROBIN,\n     CLUSTERED COLUMNSTORE INDEX\n     -- HEAP\n    )\nGO\n\nCOPY INTO dbo.NYCTaxiTripSmall\n(VendorID 1, store_and_fwd_flag 4, RatecodeID 5,  PULocationID 6 , DOLocationID 7,  \n passenger_count 8,trip_distance 9, fare_amount 10, extra 11, mta_tax 12, tip_amount 13, \n tolls_amount 14, ehail_fee 15, improvement_surcharge 16, total_amount 17, \n payment_type 18, trip_type 19, congestion_surcharge 20 )\nFROM 'https://synapsstorageacc.dfs.core.windows.net/synapscontainer/NYCTripSmall.parquet'\nWITH\n(\n    FILE_TYPE = 'PARQUET'\n    ,MAXERRORS = 0\n    ,IDENTITY_INSERT = 'OFF'\n)",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "dedicated_pool1",
+				"poolName": "dedicated_pool1"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
